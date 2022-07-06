@@ -36,12 +36,6 @@ jobs:
       with:
         version: latest
         endpoint: builders
-            
-    - name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
@@ -53,6 +47,7 @@ jobs:
     - name: Push to Registries
       uses: docker/build-push-action@v3
       with:
+        context: ./builds/actions-custom-runner/Dockerfile
         push: true
         tags: |
           ${{env.REGISTRY}}/ocpdude/actions-custom-runner:{{github.run_number}}

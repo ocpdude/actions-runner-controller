@@ -14,11 +14,12 @@ RUN sudo apt-get update -y \
 RUN sudo sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf
 
 USER root
+
 # Adding certs for my lab to the runner
-RUN mkdir -p /etc/docker/certs.d/nexus.redcloud.land/
-COPY ca.crt /etc/docker/certs.d/nexus.redcloud.land/
-COPY ca.crt /usr/local/share/ca-certificates/ca.crt
-RUN update-ca-certificates
+#RUN mkdir -p /etc/docker/certs.d/nexus.redcloud.land/
+#COPY ca.crt /etc/docker/certs.d/nexus.redcloud.land/
+#COPY ca.crt /usr/local/share/ca-certificates/ca.crt
+#RUN update-ca-certificates
 
 RUN usermod -aG sudo runner \
     && usermod -aG docker runner \

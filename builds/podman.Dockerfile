@@ -41,10 +41,10 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
     && dnf clean all
 
 # Copy files into the image
-COPY images/logger.sh /opt/bash-utils/logger.sh
-COPY images/entrypoint.sh /usr/local/bin/
-COPY images/podman/87-podman.conflist /home/podman/.config/cni/net.d/87-podman.conflist
-COPY images/podman/11-tcp-mtu-probing.conf /etc/sysctl.d/11-tcp-mtu-probing.conf
+COPY configs/logger.sh /opt/bash-utils/logger.sh
+COPY configs/entrypoint.sh /usr/local/bin/
+COPY configs/podman/87-podman.conflist /home/podman/.config/cni/net.d/87-podman.conflist
+COPY configs/podman/11-tcp-mtu-probing.conf /etc/sysctl.d/11-tcp-mtu-probing.conf
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
     && chown -R podman:podman /home/podman/.config/cni \

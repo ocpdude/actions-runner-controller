@@ -87,8 +87,6 @@ metadata:
 spec:
   scaleTargetRef:
     name: example-runner-deployment
-    # IMPORTANT : If your HRA is targeting a RunnerSet you must specify the kind in the scaleTargetRef:, uncomment the below
-    #kind: RunnerSet
   minReplicas: 1
   maxReplicas: 5
   metrics:

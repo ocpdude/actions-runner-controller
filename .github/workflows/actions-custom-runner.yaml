@@ -52,6 +52,7 @@ jobs:
         push: true
         tags: |
           ${{env.REGISTRY}}/ocpdude/actions-custom-runner:${{github.run_number}}
+          ${{env.REGISTRY}}/ocpdude/actions-custom-runner:latest
  
   check_quality:
     needs: build_push
@@ -61,5 +62,5 @@ jobs:
       continue-on-error: true
       uses: azure/container-scan@v0
       with:
-        image-name: ${{env.REGISTRY}}/ocpdude/actions-custom-runner:${{github.run_number}}
+        image-name: ${{env.REGISTRY}}/ocpdude/actions-custom-runner:latest
         run-quality-checks: true

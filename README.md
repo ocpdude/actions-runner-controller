@@ -1,4 +1,5 @@
 ## GitHub Actions Runner Controller (ARC) for OpenShift 4.X
+[![Linting Dockerfiles 🐳](https://github.com/ocpdude/actions-runner-controller/actions/workflows/docker-linter.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/docker-linter.yaml) [![Actions Custom Runner](https://github.com/ocpdude/actions-runner-controller/actions/workflows/actions-custom-runner.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/actions-custom-runner.yaml) [![Podman Custom Runner](https://github.com/ocpdude/actions-runner-controller/actions/workflows/podman-custom-runner.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/podman-custom-runner.yaml) 
 
 Source : https://github.com/actions-runner-controller/actions-runner-controller
 

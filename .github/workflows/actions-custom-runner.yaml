@@ -48,7 +48,7 @@ jobs:
     - name: Push to Registries
       uses: docker/build-push-action@v3
       with:
-        context: ./builds/actions-custom-runner/Dockerfile
+        context: ./builds/actions-custom-runner/
         push: true
         tags: |
           ${{env.REGISTRY}}/ocpdude/actions-custom-runner:${{github.run_number}}

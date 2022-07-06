@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - './actions-custom-runner/Dockerfile'
+    - './builds/actions-custom-runner/Dockerfile'
   workflow_dispatch:
    
 env:

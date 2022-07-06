@@ -44,8 +44,8 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
 #COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt
 #RUN update-ca-trust 
 
-COPY configs/logger.sh /opt/bash-utils/logger.sh
-COPY configs/entrypoint.sh /usr/local/bin/
+COPY logger.sh /opt/bash-utils/logger.sh
+COPY entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
     && sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf \

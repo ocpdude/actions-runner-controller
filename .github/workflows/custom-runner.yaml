@@ -1,4 +1,4 @@
-name: Combined Runner
+name: Actions Custom Runner
 
 on:
   push:

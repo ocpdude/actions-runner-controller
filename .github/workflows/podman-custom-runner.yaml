@@ -50,7 +50,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        context: ./builds/podman/Dockerfile
+        context: ./builds/podman/
         tags: |
           ${{env.REGISTRY}}/ocpdude/actions-custom-runner:${{github.run_number}}
  

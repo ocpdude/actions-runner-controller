@@ -43,11 +43,12 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
 # Copy files into the image
 COPY configs/logger.sh /opt/bash-utils/logger.sh
 COPY configs/entrypoint.sh /usr/local/bin/
-COPY configs/podman/87-podman.conflist /home/podman/.config/cni/net.d/87-podman.conflist
-COPY configs/podman/11-tcp-mtu-probing.conf /etc/sysctl.d/11-tcp-mtu-probing.conf
+#COPY configs/87-podman.conflist /home/podman/.config/cni/net.d/87-podman.conflist
+#COPY configs/11-tcp-mtu-probing.conf /etc/sysctl.d/11-tcp-mtu-probing.conf
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
     && chown -R podman:podman /home/podman/.config/cni \
+    && sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf \
     && sed -i 's|\#ignore_chown_errors = "false"|ignore_chown_errors = "true"|g' /etc/containers/storage.conf
 
 VOLUME $HOME/.local/share/containers/storage

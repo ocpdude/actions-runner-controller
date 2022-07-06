@@ -1,0 +1,17 @@
+name: Linting Dockerfiles 🐳
+on:
+ pull_request:
+    branches:
+    - '!main'
+    paths: 
+    - custom.Dockerfile
+    - podman.Dockerfile
+
+ workflow_dispatch:
+
+jobs:
+    
+  docker-lint:
+    uses: ocpdude/reusable/.github/workflows/linter.yaml@main
+    with:
+      language: hadolint

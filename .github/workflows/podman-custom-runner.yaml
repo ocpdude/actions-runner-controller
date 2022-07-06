@@ -53,6 +53,7 @@ jobs:
         context: ./builds/podman/
         tags: |
           ${{env.REGISTRY}}/ocpdude/podman-runner:${{github.run_number}}
+          ${{env.REGISTRY}}/ocpdude/podman-runner:latest
  
   check_quality:
     needs: build_push
@@ -62,5 +63,5 @@ jobs:
       continue-on-error: true
       uses: azure/container-scan@v0
       with:
-        image-name: ${{env.REGISTRY}}/ocpdude/podman-runner:${{github.run_number}}
+        image-name: ${{env.REGISTRY}}/ocpdude/podman-runner:latest
         run-quality-checks: true

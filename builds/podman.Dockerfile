@@ -40,14 +40,14 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
     && touch /etc/containers/nodocker \
     && dnf clean all
 
-# Copy files into the image
+# Adding custom CA to runner
+#COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt
+#RUN update-ca-trust 
+
 COPY configs/logger.sh /opt/bash-utils/logger.sh
 COPY configs/entrypoint.sh /usr/local/bin/
-#COPY configs/87-podman.conflist /home/podman/.config/cni/net.d/87-podman.conflist
-#COPY configs/11-tcp-mtu-probing.conf /etc/sysctl.d/11-tcp-mtu-probing.conf
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
-    && chown -R podman:podman /home/podman/.config/cni \
     && sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf \
     && sed -i 's|\#ignore_chown_errors = "false"|ignore_chown_errors = "true"|g' /etc/containers/storage.conf
 

@@ -4,8 +4,8 @@ on:
     branches:
     - '!main'
     paths: 
-    - custom.Dockerfile
-    - podman.Dockerfile
+    - ./builds/podman/Dockerfile
+    - ./builds/actions-custom-runner/Dockerfile
 
  workflow_dispatch:
 

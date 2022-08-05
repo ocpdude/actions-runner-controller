@@ -28,7 +28,7 @@ spec:
         requests:
           cpu: "1"
           memory: "2Gi"
-      image: nexus.redcloud.land/summerwind/custom-runner:617.5
+      image: ghcr.io/ocpdude/actions-custom-runner:latest
       # running a custom built runner image
       containers:
       # I am passing some custom variables to docker

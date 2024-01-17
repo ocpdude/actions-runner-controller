@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   daemon.json: |-
     {
-      "insecure-registries" : ["https://registry.redcloud.land"]
+      "insecure-registries" : ["https://registry.example.com"]
     }
 kind: ConfigMap
 metadata:

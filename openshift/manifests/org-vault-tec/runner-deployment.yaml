@@ -13,12 +13,7 @@ spec:
       group: OpenShift
       labels:
         - docker,openshift
-      # securityContext:
-      #   fsGroup: 1000
-      # # required for runner <0.25
-      # enterprise: github
       organization: vault-tec
-
       imagePullPolicy: Always
       resources:
         limits:

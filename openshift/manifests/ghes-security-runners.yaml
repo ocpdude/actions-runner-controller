@@ -17,7 +17,7 @@ spec:
           name: daemon-json
           subPath: daemon.json
       dockerdContainerResources: {}
-      image: registry.redcloud.land/actions-runner-docker:1.11
+      image: registry.example.com/actions-runner-docker:1.11
       imagePullPolicy: Always
       labels:
       - dependabot

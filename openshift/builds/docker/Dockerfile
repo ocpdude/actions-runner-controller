@@ -12,13 +12,11 @@ RUN sudo apt-get update -y \
   && sudo apt-get install uidmap vim -y \
   && sudo rm -rf /var/lib/apt/lists/*
 
-# RUN sudo sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf
-
 USER root
 
 # Adding certs for my lab to the runner
-COPY ca.crt /usr/local/share/ca-certificates/ca.crt
-RUN update-ca-certificates
+# COPY ca.crt /usr/local/share/ca-certificates/ca.crt
+# RUN update-ca-certificates
 
 RUN usermod -aG sudo runner \
     && usermod -aG docker runner \

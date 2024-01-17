@@ -3,7 +3,7 @@ kind: RunnerDeployment
 metadata:
   name: openshift-podman-runner
 spec:
-  # Using "HorizontalRunnerAutoscaler"
+  # Using HorizontalRunnerAutoscaler? Update replica's to 0
   replicas: 1
   template:
     metadata:
@@ -11,7 +11,7 @@ spec:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
     spec:
       # Assign runner group
-      dockerdWithinRunnerContainer: false
+      dockerdWithinRunnerContainer: false # << DISABLE DOCKERD
       group: OpenShift
       labels:
         - podman
@@ -24,7 +24,7 @@ spec:
         requests:
           cpu: "250m"
           memory: "250Mi"
-      image: registry.redcloud.land/actions-runner-podman:1.11
+      image: registry.example.com/actions-runner-podman:1.11
 # Optionally break out the storage layer for podman,
 # handy for large builds that need persistant data 
 # between runners

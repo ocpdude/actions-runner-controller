@@ -1,10 +1,10 @@
-FROM quay.io/podman/stable:v4.1.1
-
+FROM --platform=linux/amd64 quay.io/podman/stable:v4.8.3
+LABEL org.opencontainers.image.source https://github.com/shakerg/kubernoodles
 # Target architecture
 ARG TARGETPLATFORM=linux/amd64
 
 # GitHub runner arguments
-ARG RUNNER_VERSION=2.294.0
+ARG RUNNER_VERSION=2.311.0
 
 # Other arguments
 ARG DEBUG=false
@@ -23,9 +23,6 @@ RUN dnf install -y \
     curl \
     && dnf clean all
 
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-    && mv kubectl /usr/local/bin/
-
 # Runner download supports amd64 as x64
 RUN test -n "$TARGETPLATFORM" || (echo "TARGETPLATFORM must be set" && false)
 RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
@@ -40,14 +37,12 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
     && touch /etc/containers/nodocker \
     && dnf clean all
 
-# Adding custom CA to runner
-#COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt
-#RUN update-ca-trust 
-
 COPY logger.sh /opt/bash-utils/logger.sh
+COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt
 COPY entrypoint.sh /usr/local/bin/
 
-RUN chmod +x /usr/local/bin/entrypoint.sh \
+RUN update-ca-trust \
+    && chmod +x /usr/local/bin/entrypoint.sh \
     && sed -i 's|\[machine\]|\#\[machine\]|g' /usr/share/containers/containers.conf \
     && sed -i 's|\#ignore_chown_errors = "false"|ignore_chown_errors = "true"|g' /etc/containers/storage.conf
 

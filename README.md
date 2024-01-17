@@ -27,7 +27,7 @@ Prior to installing ARC, you will need to install and configure cert-manager, th
 Releases : https://github.com/actions-runner-controller/actions-runner-controller/releases/
 
 1. Install the current release \
-`kubectl create -f https://github.com/actions-runner-controller/actions-runner-controller/releases/download/v0.25.0/actions-runner-controller.yaml`
+`kubectl create -f https://github.com/actions-runner-controller/actions-runner-controller/releases/download/v0.27.6/actions-runner-controller.yaml`
 2. When deploying the solution for a GHES environment you need to provide an additional environment variable as part of the controller deployment \
 `kubectl set env deploy controller-manager -c manager GITHUB_ENTERPRISE_URL=https://git.redcloud.land --namespace actions-runner-system`
 3. Prior to 0.25 you have to set _privileged_ access \
@@ -97,3 +97,16 @@ spec:
 ```
 
 There are a lot of options here, so I am only showing the defaults, but if you'd like an example I have included my scripts under /manifests. Additionally, I have evaluated two custom runners - one based on docker and the other based on podman (buildah). I will include these as examples under /builds.
+
+
+
+
+
+<!-- https://git.redcloud.land/organizations/ocpdude/settings/apps/new?url=http://github.com/actions/actions-runner-controller&webhook_active=false&public=false&administration=write&organization_self_hosted_runners=write&actions=read&checks=read
+
+app id: 24
+install id: 49
+
+kubectl create secret generic controller-manager -n actions-runner-system --from-literal=github_app_id=24 --from-literal=github_app_installation_id=49 --from-file=github_app_private_key=/Users/shaker/Downloads/actions-runner-system.2024-01-10.private-key.pem -->
+
+

@@ -11,7 +11,7 @@ spec:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
     spec:
       # Assign runner group
-      dockerdWithinRunnerContainer: false # << DISABLE DOCKERD
+      dockerEnabled: false # << DISABLE DOCKERD
       group: OpenShift
       labels:
         - podman

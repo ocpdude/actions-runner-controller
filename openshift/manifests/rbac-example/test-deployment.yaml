@@ -1,0 +1,63 @@
+# apiVersion: actions.summerwind.dev/v1alpha1
+# kind: RunnerDeployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scc-docker-runner
+spec:
+  selector:
+    matchLabels:
+      app: scc-docker-runner
+  # serviceAccountName: github-arc-sa
+  # securityContext:
+  #   runAsUser: 1000
+  #   runAsGroup: 1000
+  #   fsGroup: 1000
+  replicas: 1
+  template:
+    serviceAccountName: github-arc-sa
+    securityContext:
+      runAsUser: 1001
+      runAsGroup: 1001
+      fsGroup: 1001
+      supplementalGroups: [1000, 2000]
+    metadata:
+      labels:
+        app: scc-docker-runner
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+    spec:
+      containers:
+      - name: test
+        # serviceAccountName: github-arc-sa
+        # securityContext:
+        #   runAsUser: 1000
+        #   runAsGroup: 1000
+        #   fsGroup: 1000
+        env:
+        - name: XDG_RUNTIME_DIR
+          value: "/tmp"
+        group: OpenShift
+        labels:
+          - docker
+        organization: ocpdude
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+          requests:
+            cpu: "250m"
+            memory: "250Mi"
+        dockerdWithinRunnerContainer: true
+        image: registry.redcloud.land/actions-runner-custom/ubuntu:22.04.1
+      #   volumeMounts:
+      #   - mountPath: /home/runner/bin/
+      #     name: docker-volume
+      #   - mountPath: /home/runner/.config/docker/
+      #     name: cache-volume
+      # volumes:
+      # - name: docker-volume
+      #   emptyDir: {}
+      # - name: cache-volume
+      #   emptyDir: {}

@@ -1,0 +1,58 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: openshift-runners-ocpdude
+spec:
+  # Using "HorizontalRunnerAutoscaler"
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+    spec:
+      serviceAccountName: github-arc-sa
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   fsGroup: 1000
+      #   supplementalGroups: [1000, 2000]
+      group: OpenShift
+      labels:
+        - docker
+      organization: ocpdude
+      imagePullPolicy: Always
+      resources:
+        limits:
+          cpu: "250m"
+          memory: "500Mi"
+      image: dckr.redcloud.land/summerwind/actions-runner-dind-rootless:latest
+      containers:
+      - name: runner
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        supplementalGroups: [1000, 2000]
+        volumeMounts:
+        - mountPath: /home/runner/.config/docker
+          name: cache-volume
+      volumes:
+      - name: cache-volume
+        emptyDir: {}
+# ---
+# apiVersion: actions.summerwind.dev/v1alpha1
+# kind: HorizontalRunnerAutoscaler
+# metadata:
+#   name: ocpdude-runner-autoscaler
+# spec:
+#   scaleDownDelaySecondsAfterScaleOut: 300
+#   scaleTargetRef:
+#     name: openshift-runners-ocpdude
+#   minReplicas: 2
+#   maxReplicas: 8
+#   metrics:
+#   - type: PercentageRunnersBusy
+#     scaleUpThreshold: '0.75'
+#     scaleDownThreshold: '0.25'
+#     scaleUpFactor: '2'
+#     scaleDownFactor: '0.5'

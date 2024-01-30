@@ -37,10 +37,18 @@ jobs:
       #     # To report GitHub Actions status checks
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # - name: Docker-linter
+      #   uses: super-linter/super-linter/slim@v5.7.2
+      #   env:
+      #     FILTER_REGEX_INCLUDE: ./openshift/builds/*/Dockerfile
+      #     DEFAULT_BRANCH: main
+      #     # To report GitHub Actions status checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Docker-linter
-        uses: super-linter/super-linter/slim@v5.7.2
-        env:
-          FILTER_REGEX_INCLUDE: ./openshift/builds/*/Dockerfile
-          DEFAULT_BRANCH: main
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: |
+            ./openshift/builds/docker/Dockerfile
+            ./openshift/builds/podman/Dockerfile
+            ./openshift/builds/windows/Dockerfile

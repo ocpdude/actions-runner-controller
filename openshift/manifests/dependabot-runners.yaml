@@ -11,26 +11,25 @@ spec:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
     spec:
       containers:
-      - name: docker
-        resources: {}
-        volumeMounts:
-        - mountPath: /etc/docker/daemon.json
-          name: daemon-json
-          subPath: daemon.json
-      dockerdContainerResources: {}
+        - name: docker
+          resources: {}
+          volumeMounts:
+          - mountPath: /etc/docker/daemon.json
+            name: daemon-json
+            subPath: daemon.json
       image: ghcr.io/ocpdude/docker-runner:latest
       imagePullPolicy: Always
       labels:
-      - dependabot
+        - dependabot
       enterprise: github
       resources:
         limits:
           cpu: "0.5"
           memory: 250Mi
       volumes:
-      - configMap:
+        - configMap:
+            name: daemon-json
           name: daemon-json
-        name: daemon-json
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler

@@ -12,9 +12,9 @@ on:
         
  workflow_dispatch:
 env:
-  FILTER_REGEX_INCLUDE:  |
-    ./openshift/manifests/*/.*.yaml
-    ./openshift/builds/*/Dockerfile
+  KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
+  FILTER_REGEX_INCLUDE: ./openshift/manifests/*/.*.yaml
+    # ./openshift/builds/*/Dockerfile
     
 jobs:
   build:

@@ -1,0 +1,17 @@
+name: Linting Kubernetes ☸️
+on:
+ pull_request:
+    branches:
+    - 'main'
+    paths: 
+    - './openshift/manifests/org-ocpdude/**.yaml'
+    - './openshift/manifests/org-vault-tec/**.yaml'
+    - './openshift/manifests/rbac-example/**.yaml'
+        
+ workflow_dispatch:
+
+jobs:
+  k8s-lint:
+    uses: ocpdude/reusable/.github/workflows/linter.yaml@main
+    with:
+      language: YamlLint, kubeval

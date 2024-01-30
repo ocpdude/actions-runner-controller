@@ -32,39 +32,6 @@ spec:
         name: daemon-json
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerDeployment
-metadata:
-  name: code-scanning-runner
-  namespace: actions-runner-system
-spec:
-  template:
-    metadata:
-      annotations:
-        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
-    spec:
-      containers:
-      - name: docker
-        resources: {}
-        volumeMounts:
-        - mountPath: /etc/docker/daemon.json
-          name: daemon-json
-          subPath: daemon.json
-      dockerdContainerResources: {}
-      image: ghcr.io/ocpdude/docker-runner:latest
-      imagePullPolicy: Always
-      labels:
-      - code-scanning
-      enterprise: github
-      resources:
-        limits:
-          cpu: "0.5"
-          memory: 250Mi
-      volumes:
-      - configMap:
-          name: daemon-json
-        name: daemon-json
----
-apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
   name: dependabot-runner-autoscaler
@@ -72,23 +39,6 @@ spec:
   scaleDownDelaySecondsAfterScaleOut: 300
   scaleTargetRef:
     name: dependabot-runner
-  minReplicas: 1
-  maxReplicas: 8
-  metrics:
-  - type: PercentageRunnersBusy
-    scaleUpThreshold: '0.75'
-    scaleDownThreshold: '0.25'
-    scaleUpFactor: '2'
-    scaleDownFactor: '0.5'
----
-apiVersion: actions.summerwind.dev/v1alpha1
-kind: HorizontalRunnerAutoscaler
-metadata:
-  name: code-scanning-runner-autoscaler
-spec:
-  scaleDownDelaySecondsAfterScaleOut: 300
-  scaleTargetRef:
-    name: code-scanning-runner
   minReplicas: 1
   maxReplicas: 8
   metrics:

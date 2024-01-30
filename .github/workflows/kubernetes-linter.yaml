@@ -11,9 +11,9 @@ on:
  workflow_dispatch:
 env:
   FILTER_REGEX_INCLUDE: |
-    ./openshift/manifests/org-ocpdude/**.yaml
-    ./openshift/manifests/org-vault-tec/**.yaml
-    ./openshift/manifests/rbac-example/**.yaml
+    ./openshift/manifests/org-ocpdude/.*.yaml
+    ./openshift/manifests/org-vault-tec/.*.yaml
+    ./openshift/manifests/rbac-example/.*.yaml
     
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
           fetch-depth: 0
 
       - name: Super-linter
-        uses: super-linter/super-linter@v5.7.2  # x-release-please-version
+        uses: super-linter/super-linter/slim@v5.7.2  # x-release-please-version
         env:
           DEFAULT_BRANCH: main
           # To report GitHub Actions status checks

@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Super-linter
+      - name: Kubernetes-linter
         uses: super-linter/super-linter/slim@v5.7.2
         env:
           KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
@@ -41,7 +41,7 @@ jobs:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Super-linter
+      - name: Docker-linter
         uses: super-linter/super-linter/slim@v5.7.2
         env:
           FILTER_REGEX_INCLUDE: ./openshift/builds/*/Dockerfile

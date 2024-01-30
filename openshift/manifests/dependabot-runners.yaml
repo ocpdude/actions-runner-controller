@@ -12,11 +12,11 @@ spec:
     spec:
       containers:
         - name: docker
-          resources: {}
+          # resources: {}
           volumeMounts:
-          - mountPath: /etc/docker/daemon.json
-            name: daemon-json
-            subPath: daemon.json
+            - mountPath: /etc/docker/daemon.json
+              name: daemon-json
+              subPath: daemon.json
       image: ghcr.io/ocpdude/docker-runner:latest
       imagePullPolicy: Always
       labels:
@@ -42,8 +42,8 @@ spec:
   minReplicas: 1
   maxReplicas: 8
   metrics:
-  - type: PercentageRunnersBusy
-    scaleUpThreshold: '0.75'
-    scaleDownThreshold: '0.25'
-    scaleUpFactor: '2'
-    scaleDownFactor: '0.5'
+    - type: PercentageRunnersBusy
+      scaleUpThreshold: '0.75'
+      scaleDownThreshold: '0.25'
+      scaleUpFactor: '2'
+      scaleDownFactor: '0.5'

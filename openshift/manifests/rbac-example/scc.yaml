@@ -13,10 +13,10 @@ seLinuxContext:
 fsGroup:
   type: MustRunAs 
   ranges:
-  - min: 1000
-    max: 2000
+    - min: 1000
+      max: 2000
 supplementalGroups:
   type: MustRunAs 
   ranges:
-  - min: 1000
-    max: 2000
+    - min: 1000
+      max: 2000

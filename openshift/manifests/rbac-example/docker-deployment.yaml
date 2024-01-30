@@ -28,15 +28,15 @@ spec:
           memory: "500Mi"
       image: summerwind/actions-runner-dind-rootless:latest
       containers:
-      - name: runner
+        - name: runner
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
         supplementalGroups: [1000, 2000]
         volumeMounts:
-        - mountPath: /home/runner/.config/docker
-          name: cache-volume
+          - mountPath: /home/runner/.config/docker
+            name: cache-volume
       volumes:
-      - name: cache-volume
-        emptyDir: {}
+        - name: cache-volume
+          emptyDir: {}

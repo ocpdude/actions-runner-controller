@@ -51,7 +51,7 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%m%d')"
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Set up Docker Context
       id: buildx-context
       run: |

@@ -29,9 +29,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the test image
-      run: |
-        cd actions-runner-controller/openshift/builds/podman/
-        docker build . --tag localbuild/testimage:latest
+      working-directory: ocpdude/actions-runner-controller/openshift/builds/podman/
+      run: docker build . --tag localbuild/testimage:latest
     - name: Grype scan the test image
       uses: anchore/scan-action@v3
       id: scan

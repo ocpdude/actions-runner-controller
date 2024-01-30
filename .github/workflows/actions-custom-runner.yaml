@@ -1,4 +1,4 @@
-name: Actions Custom Runner
+name: Docker Custom Runner
 
 on:
   push:
@@ -69,6 +69,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: |
-          ${{env.REGISTRY}}/ocpdude/actions-runner-controller/docker-runner:${{ steps.date.outputs.date }}
-          ${{env.REGISTRY}}/ocpdude/actions-runner-controller/docker-runner:latest
+          ${{env.REGISTRY}}/ocpdude/docker-runner:${{ steps.date.outputs.date }}
+          ${{env.REGISTRY}}/ocpdude/docker-runner:latest
   

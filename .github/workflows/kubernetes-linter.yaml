@@ -10,7 +10,11 @@ on:
         
  workflow_dispatch:
 env:
-  FILTER_REGEX_INCLUDE: ./openshift/manifests/.*
+  FILTER_REGEX_INCLUDE: |
+    ./openshift/manifests/org-ocpdude/**.yaml
+    ./openshift/manifests/org-vault-tec/**.yaml
+    ./openshift/manifests/rbac-example/**.yaml
+    
 jobs:
   build:
     name: Lint

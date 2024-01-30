@@ -44,7 +44,7 @@ jobs:
       - name: Docker-linter
         uses: super-linter/super-linter/slim@v5.7.2
         env:
-          FILTER_REGEX_INCLUDE: ./openshift/builds/*/Dockerfile
+          FILTER_REGEX_INCLUDE: ./openshift/builds/*/.Dockerfile
           DEFAULT_BRANCH: main
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

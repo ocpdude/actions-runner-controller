@@ -69,6 +69,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: |
-          ${{env.REGISTRY}}/ocpdude/actions-runner-controller/podman-runner:${{ steps.date.outputs.date }}
-          ${{env.REGISTRY}}/ocpdude/actions-runner-controller/podman-runner:latest
+          ${{env.REGISTRY}}/ocpdude/podman-runner:${{ steps.date.outputs.date }}
+          ${{env.REGISTRY}}/ocpdude/podman-runner:latest
  

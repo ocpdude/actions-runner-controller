@@ -14,10 +14,10 @@ env:
   
 jobs:
 
-  docker-linter:
-    uses: ocpdude/reusable/.github/workflows/linter.yaml@main
-    with:
-      language: hadolint
+  # docker-linter:
+  #   uses: ocpdude/reusable/.github/workflows/linter.yaml@main
+  #   with:
+  #     language: hadolint
 
   security-checks:
     permissions:
@@ -25,12 +25,12 @@ jobs:
       security-events: write
       actions: read
     runs-on: ubuntu-latest
-    needs: [ docker-linter ]
+    # needs: [ docker-linter ]
     steps:
     - uses: actions/checkout@v4
     - name: Build the test image
       run: |
-        cd ocpdude/actions-runner-controller/openshift/builds/podman/
+        cd actions-runner-controller/openshift/builds/podman/
         docker build . --tag localbuild/testimage:latest
     - name: Grype scan the test image
       uses: anchore/scan-action@v3

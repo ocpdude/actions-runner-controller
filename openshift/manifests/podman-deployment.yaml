@@ -1,3 +1,4 @@
+---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
@@ -25,46 +26,3 @@ spec:
           cpu: "250m"
           memory: "250Mi"
       image: ghcr.io/ocpdude/podman-runner:latest
-# Optionally break out the storage layer for podman,
-# handy for large builds that need persistant data 
-# between runners
-#       containers:
-#       - name: runner
-#         volumeMounts:
-#         - mountPath: /home/podman/.local/share/containers/storage 
-#           name: podman-storage
-#       volumes:
-#       - name: podman-storage
-#         persistentVolumeClaim: 
-#           claimName: "podman-runner-pvc"
-
-# ---
-# apiVersion: "v1"
-# kind: "PersistentVolumeClaim"
-# metadata:
-#   name: "podman-runner-pvc"
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 1Gi
-#   storageClassName: "thin"
-#   volumeMode: Filesystem
-# ---
-# apiVersion: actions.summerwind.dev/v1alpha1
-# kind: HorizontalRunnerAutoscaler
-# metadata:
-#   name: podman-runner-autoscaler
-# spec:
-#   scaleDownDelaySecondsAfterScaleOut: 300
-#   scaleTargetRef:
-#     name: openshift-podman-runner
-#   minReplicas: 1
-#   maxReplicas: 3
-#   metrics:
-#   - type: PercentageRunnersBusy
-#     scaleUpThreshold: '0.75'
-#     scaleDownThreshold: '0.25'
-#     scaleUpFactor: '2'
-#     scaleDownFactor: '0.5'

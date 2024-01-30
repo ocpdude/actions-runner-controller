@@ -1,5 +1,4 @@
-# apiVersion: actions.summerwind.dev/v1alpha1
-# kind: RunnerDeployment
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -50,14 +49,4 @@ spec:
             cpu: "250m"
             memory: "250Mi"
         dockerdWithinRunnerContainer: true
-        image: registry.redcloud.land/actions-runner-custom/ubuntu:22.04.1
-      #   volumeMounts:
-      #   - mountPath: /home/runner/bin/
-      #     name: docker-volume
-      #   - mountPath: /home/runner/.config/docker/
-      #     name: cache-volume
-      # volumes:
-      # - name: docker-volume
-      #   emptyDir: {}
-      # - name: cache-volume
-      #   emptyDir: {}
+        image: ghcr.io/ocpdude/docker-runner:latest

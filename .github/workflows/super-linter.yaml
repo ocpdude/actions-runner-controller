@@ -18,7 +18,7 @@ on:
     
 jobs:
   build:
-    name: Lint
+    name: Let's lint it up! 🎸
     runs-on: ubuntu-latest
 
     permissions:

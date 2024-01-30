@@ -38,7 +38,7 @@ RUN ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
     && dnf clean all
 
 COPY logger.sh /opt/bash-utils/logger.sh
-COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt
+# COPY ca.crt /etc/pki/ca-trust/source/anchors/ca.crt # I'm importing a private CA
 COPY entrypoint.sh /usr/local/bin/
 
 RUN update-ca-trust \

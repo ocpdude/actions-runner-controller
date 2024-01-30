@@ -7,10 +7,14 @@ on:
     - './openshift/manifests/org-ocpdude/**.yaml'
     - './openshift/manifests/org-vault-tec/**.yaml'
     - './openshift/manifests/rbac-example/**.yaml'
+    - './openshift/builds/podman/Dockerfile'
+    - './openshift/builds/docker/Dockerfile'
         
  workflow_dispatch:
 env:
-  FILTER_REGEX_INCLUDE:  ./openshift/manifests/*/.*.yaml
+  FILTER_REGEX_INCLUDE:  |
+    ./openshift/manifests/*/.*.yaml
+    ./openshift/builds/*/Dockerfile
     
 jobs:
   build:

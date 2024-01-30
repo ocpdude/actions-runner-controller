@@ -39,4 +39,5 @@ spec:
             name: cache-volume
       volumes:
         - name: cache-volume
-          emptyDir: {}
+          emptyDir:
+            sizeLimit: 100Mi

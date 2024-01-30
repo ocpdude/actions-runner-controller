@@ -11,10 +11,10 @@ on:
     - './openshift/builds/docker/Dockerfile'
         
  workflow_dispatch:
-env:
-  KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
-  FILTER_REGEX_INCLUDE: ./openshift/manifests/*/.*.yaml
-    # ./openshift/builds/*/Dockerfile
+# env:
+#   KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
+#   FILTER_REGEX_INCLUDE: ./openshift/manifests/*/.*.yaml
+#     # ./openshift/builds/*/Dockerfile
     
 jobs:
   build:
@@ -33,8 +33,18 @@ jobs:
           fetch-depth: 0
 
       - name: Super-linter
-        uses: super-linter/super-linter/slim@v5.7.2  # x-release-please-version
+        uses: super-linter/super-linter/slim@v5.7.2
         env:
+          KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
+          FILTER_REGEX_INCLUDE: ./openshift/manifests/*/.*.yaml
+          DEFAULT_BRANCH: main
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Super-linter
+        uses: super-linter/super-linter/slim@v5.7.2
+        env:
+          FILTER_REGEX_INCLUDE: ./openshift/builds/*/Dockerfile
           DEFAULT_BRANCH: main
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

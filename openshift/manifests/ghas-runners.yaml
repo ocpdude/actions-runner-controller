@@ -12,12 +12,12 @@ spec:
     spec:
       containers:
         - name: docker
-          resources: {}
+          # resources: {}
           volumeMounts:
             - mountPath: /etc/docker/daemon.json
               name: daemon-json
               subPath: daemon.json
-      dockerdContainerResources: {}
+      # dockerdContainerResources: {}
       image: ghcr.io/ocpdude/docker-runner:latest
       imagePullPolicy: Always
       labels:

@@ -1,4 +1,4 @@
-name: Super Linter 🎸
+name: Code Linter
 on:
  pull_request:
     branches:
@@ -48,7 +48,7 @@ jobs:
       - name: Docker-linter
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: |
+          dockerfile:
             ./openshift/builds/docker/Dockerfile
             ./openshift/builds/podman/Dockerfile
             ./openshift/builds/windows/Dockerfile

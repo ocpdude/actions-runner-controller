@@ -46,7 +46,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to Registries
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: ./builds/actions-custom-runner/
         push: true

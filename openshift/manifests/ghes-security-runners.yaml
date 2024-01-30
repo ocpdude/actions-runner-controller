@@ -17,7 +17,7 @@ spec:
           name: daemon-json
           subPath: daemon.json
       dockerdContainerResources: {}
-      image: registry.example.com/actions-runner-docker:1.11
+      image: ghcr.io/ocpdude/docker-runner:latest
       imagePullPolicy: Always
       labels:
       - dependabot
@@ -50,7 +50,7 @@ spec:
           name: daemon-json
           subPath: daemon.json
       dockerdContainerResources: {}
-      image: registry.redcloud.land/actions-runner-docker:1.11
+      image: ghcr.io/ocpdude/docker-runner:latest
       imagePullPolicy: Always
       labels:
       - code-scanning

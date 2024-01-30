@@ -24,7 +24,7 @@ spec:
         requests:
           cpu: "250m"
           memory: "250Mi"
-      image: registry.example.com/actions-runner-podman:1.11
+      image: ghcr.io/ocpdude/podman-runner:latest
 # Optionally break out the storage layer for podman,
 # handy for large builds that need persistant data 
 # between runners

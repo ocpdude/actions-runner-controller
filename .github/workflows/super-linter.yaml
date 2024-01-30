@@ -50,5 +50,5 @@ jobs:
         with:
           dockerfile:
             ./openshift/builds/docker/Dockerfile
-            ./openshift/builds/podman/Dockerfile
-            ./openshift/builds/windows/Dockerfile
+            # ./openshift/builds/podman/Dockerfile
+            # ./openshift/builds/windows/Dockerfile

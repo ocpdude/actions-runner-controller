@@ -1,3 +1,5 @@
+[![Code Linter](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml)
+
 # Multitenancy on OpenShift (Community Version)
 
 With a few changes we can leverage a single ARC controller-manager across multiple organizations. A quick prereq is that the controller must be on version >0.26.0. The initial advantage of this is not having the overhead of multiple controllers and crd's that need to be managed, being out of sync with multiple deployments causes issues with your runner deployments.

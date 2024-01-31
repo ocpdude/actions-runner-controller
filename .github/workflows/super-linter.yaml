@@ -1,22 +1,25 @@
 name: Code Linter
+
 on:
- pull_request:
+  push:
     branches:
-    - 'main'
-    paths: 
-    - './openshift/manifests/org-ocpdude/**.yaml'
-    - './openshift/manifests/org-vault-tec/**.yaml'
-    - './openshift/manifests/rbac-example/**.yaml'
-    - './openshift/builds/podman/Dockerfile'
-    - './openshift/builds/docker/Dockerfile'
+    - main
+  pull_request:
+      branches:
+      - '!main'
+      paths: 
+      - './openshift/manifests/org-ocpdude/**.yaml'
+      - './openshift/manifests/org-vault-tec/**.yaml'
+      - './openshift/manifests/rbac-example/**.yaml'
+      - './openshift/builds/podman/Dockerfile'
+      - './openshift/builds/docker/Dockerfile'
         
- workflow_dispatch:
+  workflow_dispatch:
     
 jobs:
   build:
     name: Let's lint it up! 🎸
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       packages: read

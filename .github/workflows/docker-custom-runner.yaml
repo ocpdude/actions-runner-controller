@@ -1,7 +1,7 @@
 name: Docker Custom Runner
 
 on:
-  push:
+  # push:
     # branches:
     #   - main
     # paths:

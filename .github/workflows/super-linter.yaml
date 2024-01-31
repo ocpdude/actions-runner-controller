@@ -7,7 +7,7 @@ on:
     
   pull_request:
     branches:
-      - 'main'
+      - '!main'
     paths: 
       - 'openshift/manifests/org-ocpdude/**.yaml'
       - 'openshift/manifests/org-vault-tec/**.yaml'

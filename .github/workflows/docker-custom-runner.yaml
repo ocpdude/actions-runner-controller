@@ -8,7 +8,7 @@ on:
       - 'openshift/builds/docker/Dockerfile'
   pull_request:
     branches:
-      - '!main'
+      - 'main'
     paths: 
       - 'openshift/builds/docker/Dockerfile'
 

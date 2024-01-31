@@ -3,16 +3,16 @@ name: Code Linter
 on:
   # push:
   #   branches:
-  #   - main
+  #     - main
   pull_request:
       branches:
-      - '!main'
+        - 'main'
       paths: 
-      - './openshift/manifests/org-ocpdude/**.yaml'
-      - './openshift/manifests/org-vault-tec/**.yaml'
-      - './openshift/manifests/rbac-example/**.yaml'
-      - './openshift/builds/podman/Dockerfile'
-      - './openshift/builds/docker/Dockerfile'
+        - 'openshift/manifests/org-ocpdude/**.yaml'
+        - 'openshift/manifests/org-vault-tec/**.yaml'
+        - 'openshift/manifests/rbac-example/**.yaml'
+        - 'openshift/builds/podman/Dockerfile'
+        - 'openshift/builds/docker/Dockerfile'
         
   workflow_dispatch:
     

@@ -14,8 +14,6 @@ RUN sudo apt-get update -y \
 
 USER root
 
-# remove this test comment
-
 # Adding certs for my lab to the runner
 # COPY ca.crt /usr/local/share/ca-certificates/ca.crt
 # RUN update-ca-certificates

@@ -12,16 +12,14 @@ on:
     paths: 
       - 'openshift/builds/docker/Dockerfile'
 
-
   workflow_dispatch:
    
 env:
   REGISTRY: ghcr.io
   
 jobs:
-
   super-linter:
-    uses: .github/workflows/super-linter.yaml@main
+    uses: ./.github/workflows/super-linter.yaml
 
   security-checks:
     permissions:

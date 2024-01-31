@@ -1,4 +1,6 @@
-[![Code Linter](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml)
+[![Code Linter](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/super-linter.yaml)  [![Docker Custom Runner](https://github.com/ocpdude/actions-runner-controller/actions/workflows/docker-custom-runner.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/docker-custom-runner.yaml)  [![Podman Custom Runner](https://github.com/ocpdude/actions-runner-controller/actions/workflows/podman-custom-runner.yaml/badge.svg)](https://github.com/ocpdude/actions-runner-controller/actions/workflows/podman-custom-runner.yaml)
+
+
 
 # Multitenancy on OpenShift (Community Version)
 

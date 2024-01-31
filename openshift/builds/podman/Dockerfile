@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 quay.io/podman/stable:v4.8.3
+FROM quay.io/podman/stable:v4.8.3
 LABEL org.opencontainers.image.source https://github.com/shakerg/kubernoodles
 # Target architecture
 ARG TARGETPLATFORM=linux/amd64

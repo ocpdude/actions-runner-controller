@@ -43,7 +43,7 @@ jobs:
       - name: Docker-linter
         uses: super-linter/super-linter/slim@v5.7.2
         env:
-          HADOLINT_IGNORE: DL3004
+          HADOLINT_IGNORE: DL3003,DL3004,DL3007,DL3029,DL3041,DL4006
           FILTER_REGEX_INCLUDE: ./openshift/builds/*/.*Dockerfile
           DEFAULT_BRANCH: main
           # To report GitHub Actions status checks

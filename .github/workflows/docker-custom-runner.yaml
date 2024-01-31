@@ -19,7 +19,7 @@ env:
   
 jobs:
   super-linter:
-    uses: ./.github/workflows/super-linter.yaml
+    uses: ocpdude/actions-runner-controller/.github/workflows/super-linter.yaml@main
 
   security-checks:
     permissions:

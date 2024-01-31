@@ -1,11 +1,11 @@
 name: Podman Custom Runner
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'openshift/builds/podman/Dockerfile'
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'openshift/builds/podman/Dockerfile'
   pull_request:
     branches:
       - 'main'

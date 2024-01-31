@@ -2,10 +2,10 @@ name: Docker Custom Runner
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'openshift/builds/docker/Dockerfile'
+    # branches:
+    #   - main
+    # paths:
+    #   - 'openshift/builds/docker/Dockerfile'
   pull_request:
     branches:
       - 'main'

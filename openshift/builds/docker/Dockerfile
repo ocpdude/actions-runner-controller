@@ -18,7 +18,7 @@ USER root
 # COPY ca.crt /usr/local/share/ca-certificates/ca.crt
 # RUN update-ca-certificates
 
-RU N usermod -aG sudo runner \
+RUN usermod -aG sudo runner \
     && usermod -aG docker runner \
     && echo "%sudo   ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers
 

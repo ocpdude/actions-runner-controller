@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 summerwind/actions-runner:latest
+FROM summerwind/actions-runner:latest
 LABEL org.opencontainers.image.source https://github.com/shakerg/kubernoodles
 ENV VERSION_ID="22.04"
 ENV DEBIAN_FRONTEND=noninteractive
